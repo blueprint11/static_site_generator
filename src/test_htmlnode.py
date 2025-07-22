@@ -1,5 +1,5 @@
 import unittest
-from htmlnode import HTMLNode
+from htmlnode import HTMLNode ,LeafNode
 
 class Test_htmlnode(unittest.TestCase):
     def test_to_html_props(self):
@@ -14,8 +14,11 @@ class Test_htmlnode(unittest.TestCase):
 
     def test_value(self):
         hnode1=HTMLNode("p","the para is short",None,{"target": "_blank"})
-        
         self.assertEqual(hnode1.value,"the para is short")
+        
+    def test_leaf_to_html_p(self):
+        node = LeafNode("p", "Hello, world!")
+        self.assertEqual(node.to_html(), "<p>Hello, world!</p>")
 
 if __name__=="__main__":
     unittest.main()
